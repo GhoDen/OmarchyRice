@@ -25,12 +25,13 @@
   };
 
   outputs = { self, nixpkgs, home-manager, ... } @ inputs:
+    { user, system }:
     let
       user = builtins.getEnv "USER";
       system = builtins.currentSystem;
     in {
       homeConfigurations."${user}" = home-manager.lib.homeManagerConfiguration {
-      pkgs = nixpkgs.legacyPackages."${system}";
+      pkgs = import nixpkgs { inherit system; };
       extraSpecialArgs = { inherit inputs user; };
       modules = [ ./home.nix ];
     };

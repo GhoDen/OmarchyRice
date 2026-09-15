@@ -55,13 +55,7 @@ apply_home_manager() {
   local flake_target
   flake_target="$(whoami)"
 
-  if command -v home-manager >/dev/null 2>&1; then
-    home-manager switch --flake "$HOME_DIR#$flake_target"
-  else
-    log "  home-manager not on PATH yet, bootstrapping via nix run"
-    nix run home-manager/master -- switch --flake "$HOME_DIR#$flake_target" \
-      --extra-experimental-features "nix-command flakes"
-  fi
+  exec "$REPO_DIR/scripts/switch.sh"
 }
 
 main() {
