@@ -52,7 +52,7 @@ sync_packages() {
         [[ -z "$pkg" ]] && continue
         if pacman -Qi "$pkg" &>/dev/null; then
           log "  removing $pkg (dropped from $label list)"
-          omarchy-pkg-remove "$pkg" || warn "  failed to remove $pkg (in use by something else? left installed)"
+          omarchy-pkg-drop "$pkg" || warn "  failed to remove $pkg (in use by something else? left installed)"
         fi
       done <<< "$to_remove"
     fi
