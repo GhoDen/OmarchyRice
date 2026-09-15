@@ -55,7 +55,7 @@ apply_home_manager() {
   local flake_target
   flake_target="$(whoami)"
 
-  exec "$REPO_DIR/scripts/switch.sh"
+  sh "$REPO_DIR/scripts/switch.sh"
 }
 
 main() {
