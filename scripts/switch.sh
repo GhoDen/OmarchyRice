@@ -4,7 +4,6 @@ cd "$(dirname "$0")/.."
 
 USER_NAME="$(whoami)"
 
-exec nix run home-manager/master -- switch \
-  --flake "./home#${USER_NAME}" \
+exec nix run ./home#homeConfigurations."${USER_NAME}".activationPackage \
   --extra-experimental-features "nix-command flakes" \
-  -b backup
+  -- switch -b backup

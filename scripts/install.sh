@@ -78,11 +78,18 @@ apply_home_manager() {
   "$REPO_DIR/scripts/switch.sh"
 }
 
+update_flake_inputs() {
+  log "Updating flake inputs to latest (bleeding-edge mode)"
+  nix flake update --flake "$HOME_DIR" \
+    --extra-experimental-features "nix-command flakes"
+}
+
 main() {
   require_omarchy
   sync_packages "$(extract_section "$PACKAGES_FILE" pacman)" "$PACMAN_STATE" omarchy-pkg-add "pacman"
   sync_packages "$(extract_section "$PACKAGES_FILE" aur)" "$AUR_STATE" omarchy-pkg-aur-add "AUR"
   install_nix
+  update_flake_inputs
   apply_home_manager
   log "Done."
 }
