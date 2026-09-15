@@ -1,6 +1,8 @@
 # vim: ft=dosini
 
 [pacman]
+# Shell
+fish
 
 [aur]
 
