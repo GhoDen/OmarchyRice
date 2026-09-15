@@ -24,7 +24,7 @@
     # Wallpaper
     pkgs.hyprpaper
     # Font
-    pkgs.ttf-jetbrains-mono-nerd
+    pkgs.nerd-fonts.jetbrains-mono
     # Terminal
     pkgs.kitty
     # Editor
