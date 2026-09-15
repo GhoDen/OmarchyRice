@@ -4,8 +4,7 @@ set -euo pipefail
 
 REPO_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 HOME_DIR="$REPO_DIR/home"
-PACMAN_LIST="$REPO_DIR/packages/pacman.txt"
-AUR_LIST="$REPO_DIR/packages/aur.txt"
+PACKAGES_FILE="$HOME_DIR/packages.txt"
 STATE_DIR="$REPO_DIR/.state"
 PACMAN_STATE="$STATE_DIR/pacman-managed.txt"
 AUR_STATE="$STATE_DIR/aur-managed.txt"
@@ -20,20 +19,19 @@ require_omarchy() {
   }
 }
 
-# Strip comments/blanks/trailing whitespace, one package per line.
-filter_list() {
-  [[ -f "$1" ]] || return 0
-  grep -vE '^\s*(#|$)' "$1" | sed 's/[[:space:]]*$//' || true
+extract_section() {
+  local file="$1" section="$2"
+  [[ -f "$file" ]] || return 0
+  awk -v want="[$section]" '
+    /^\[.*\]$/ { active = ($0 == want); next }
+    active && $0 !~ /^[[:space:]]*(#|$)/ { print }
+  ' "$file"
 }
 
 sync_packages() {
-  local list_file="$1" state_file="$2" add_cmd="$3" label="$4"
+  local desired="$1" state_file="$2" add_cmd="$3" label="$4"
   mkdir -p "$STATE_DIR"
 
-  local desired
-  desired="$(filter_list "$list_file")"
-
-  # --- install ---
   log "Syncing $label packages"
   while IFS= read -r pkg; do
     [[ -z "$pkg" ]] && continue
@@ -45,12 +43,10 @@ sync_packages() {
     fi
   done <<< "$desired"
 
-  # --- prune: only things THIS repo installed before, that are now gone from the file ---
   if [[ -f "$state_file" ]]; then
     local previously_managed to_remove
     previously_managed="$(cat "$state_file")"
     to_remove="$(comm -23 <(sort -u <<< "$previously_managed") <(sort -u <<< "$desired") | grep -v '^$' || true)"
-
     if [[ -n "$to_remove" ]]; then
       while IFS= read -r pkg; do
         [[ -z "$pkg" ]] && continue
@@ -62,7 +58,6 @@ sync_packages() {
     fi
   fi
 
-  # --- update state to reflect current desired set ---
   echo "$desired" > "$state_file"
 }
 
@@ -85,8 +80,8 @@ apply_home_manager() {
 
 main() {
   require_omarchy
-  sync_packages "$PACMAN_LIST" "$PACMAN_STATE" omarchy-pkg-add "pacman"
-  sync_packages "$AUR_LIST" "$AUR_STATE" omarchy-pkg-aur-add "AUR"
+  sync_packages "$(extract_section "$PACKAGES_FILE" pacman)" "$PACMAN_STATE" omarchy-pkg-add "pacman"
+  sync_packages "$(extract_section "$PACKAGES_FILE" aur)" "$AUR_STATE" omarchy-pkg-aur-add "AUR"
   install_nix
   apply_home_manager
   log "Done."

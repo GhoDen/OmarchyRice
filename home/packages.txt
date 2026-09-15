@@ -1,0 +1,9 @@
+# vim: ft=dosini
+
+[pacman]
+
+[aur]
+
+[nix]
+
+[nix-flake]
