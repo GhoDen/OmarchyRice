@@ -15,7 +15,10 @@
       url = "github:yorukot/superfile";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
+    markshot = {
+      url = "github:jswysnemc/mark-shot";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     # (Example) Any future repositories can follow this exact same pattern:
     # some-other-app = {
     #   url = "github:owner/repo";
