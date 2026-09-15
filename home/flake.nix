@@ -26,8 +26,8 @@
 
   outputs = { self, nixpkgs, home-manager, ... } @ inputs:
     let
-      user = builtins.getEnv "USER";
-      system = builtins.currentSystem;
+      system = "x86_64-linux";
+      user   = "denver";
     in {
       homeConfigurations."${user}" = home-manager.lib.homeManagerConfiguration {
       pkgs = import nixpkgs { inherit system; };
