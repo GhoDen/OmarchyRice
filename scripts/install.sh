@@ -2,7 +2,7 @@
 # Omarchy rice install script — idempotent, safe to re-run.
 set -euo pipefail
 
-REPO_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+REPO_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 HOME_DIR="$REPO_DIR/home"
 PACMAN_LIST="$REPO_DIR/packages/pacman.txt"
 AUR_LIST="$REPO_DIR/packages/aur.txt"
