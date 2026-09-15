@@ -3,15 +3,20 @@ let
   rawLines = lib.splitString "\n" (builtins.readFile ./packages.txt);
 
   collected = lib.foldl' (acc: line:
-    let sectionMatch = builtins.match "\\[([a-zA-Z-]+)\\]" line;
-    in
-    if sectionMatch != null then
-      acc // { current = builtins.elemAt sectionMatch 0; }
-    else if line == "" || lib.strings.hasPrefix "#" line then
-      acc
-    else
-      acc // { "${acc.current}" = (acc."${acc.current}" or []) ++ [ line ]; }
-  ) { current = null; nix = []; "nix-flake" = []; } rawLines;
+  let
+    isHeader = lib.strings.hasPrefix "[" line && lib.strings.hasSuffix "]" line;
+    sectionName =
+      if isHeader
+      then lib.strings.removeSuffix "]" (lib.strings.removePrefix "[" line)
+      else null;
+  in
+  if sectionName != null then
+    acc // { current = sectionName; }
+  else if line == "" || lib.strings.hasPrefix "#" line then
+    acc
+  else
+    acc // { "${acc.current}" = (acc."${acc.current}" or []) ++ [ line ]; }
+) { current = null; nix = []; "nix-flake" = []; } rawLines;
 
   resolvePkg = name:
     if builtins.hasAttr name pkgs
