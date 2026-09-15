@@ -23,7 +23,7 @@ require_omarchy() {
 # Strip comments/blanks/trailing whitespace, one package per line.
 filter_list() {
   [[ -f "$1" ]] || return 0
-  grep -vE '^\s*(#|$)' "$1" | sed 's/[[:space:]]*$//'
+  grep -vE '^\s*(#|$)' "$1" | sed 's/[[:space:]]*$//' || true
 }
 
 sync_packages() {
