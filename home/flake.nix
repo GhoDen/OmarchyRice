@@ -25,7 +25,6 @@
   };
 
   outputs = { self, nixpkgs, home-manager, ... } @ inputs:
-    { user, system }:
     let
       user = builtins.getEnv "USER";
       system = builtins.currentSystem;
