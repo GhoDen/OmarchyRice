@@ -30,7 +30,7 @@
     # Editor
     pkgs.neovim
     pkgs.lua-language-server
-    pkgs.tree-sitter-cli
+    pkgs.tree-sitter
     # Custom UI
     pkgs.quickshell
     pkgs.networkmanager
