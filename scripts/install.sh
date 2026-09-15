@@ -53,7 +53,7 @@ install_nix() {
 apply_home_manager() {
   log "Applying Home Manager flake from $HOME_DIR"
   local flake_target
-  flake_target="$(whoami)@$(hostname)"
+  flake_target="$(whoami)"
 
   if command -v home-manager >/dev/null 2>&1; then
     home-manager switch --flake "$HOME_DIR#$flake_target"
