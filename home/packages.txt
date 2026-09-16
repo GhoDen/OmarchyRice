@@ -1,6 +1,8 @@
 # vim: ft=dosini
 
 [pacman]
+# Shell
+fish
 
 [aur]
 # Password Manager
@@ -9,6 +11,8 @@
 
 [nix]
 starship
+# Terminal
+kitty
 
 [nix-flake]
 markshot
