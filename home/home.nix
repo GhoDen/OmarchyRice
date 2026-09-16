@@ -43,6 +43,9 @@ in
   home.file.".config/starship.toml".source = ../dotfiles/starship.toml;
   # Kitty Config
   home.file.".config/kitty/kitty.conf".source = ../dotfiles/kitty/kitty.conf;
+  # Fish Config
+  home.file.".config/fish/config.fish".source = ../dotfiles/fish/config.fish;
+  
 
   programs.home-manager.enable = true;
 }
