@@ -3,6 +3,8 @@
 [pacman]
 # Shell
 fish
+# Browser
+qutebrowser
 
 [aur]
 # Password Manager
@@ -13,8 +15,6 @@ fish
 starship
 # Terminal
 kitty
-# Browser
-qutebrowser
 
 [nix-flake]
 markshot
