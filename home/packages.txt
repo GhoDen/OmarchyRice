@@ -3,6 +3,8 @@
 [pacman]
 # Shell
 fish
+# Terminal
+kitty
 # Browser
 qutebrowser
 
@@ -16,8 +18,6 @@ limusic-bin
 [nix]
 # Prompt
 starship
-# Terminal
-kitty
 
 [nix-flake]
 markshot
