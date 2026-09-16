@@ -13,6 +13,8 @@ fish
 starship
 # Terminal
 kitty
+# Browser
+qutebrowser
 
 [nix-flake]
 markshot
