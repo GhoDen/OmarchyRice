@@ -5,6 +5,7 @@
 [aur]
 
 [nix]
+starship
 
 [nix-flake]
 markshot

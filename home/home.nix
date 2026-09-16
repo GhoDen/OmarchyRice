@@ -39,5 +39,8 @@ in
 
   home.packages = nixPackages ++ flakePackages;
 
+  # Starship Config
+  home.file.".config/starship.toml".source = ./starship.toml;
+
   programs.home-manager.enable = true;
 }
