@@ -7,6 +7,8 @@ fish
 kitty
 # Browser
 qutebrowser
+# System Information Fetcher
+fastfetch
 
 [aur]
 # Password Manager
@@ -20,4 +22,5 @@ limusic-bin
 starship
 
 [nix-flake]
+# Screenshot
 markshot

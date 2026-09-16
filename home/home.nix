@@ -40,12 +40,14 @@ in
   home.packages = nixPackages ++ flakePackages;
 
   # Starship Config
-  home.file.".config/starship.toml".source = ../dotfiles/starship.toml;
+  home.file.".config/starship.toml".source = ../dotfiles/starship/starship.toml;
   # Kitty Config
   home.file.".config/kitty/kitty.conf".source = ../dotfiles/kitty/kitty.conf;
   # Fish Config
   home.file.".config/fish/config.fish".source = ../dotfiles/fish/config.fish;
-  
+  # Fastfetch Config
+  home.file.".config/fastfetch/config.jsonc".source = ../dotfiles/fastfetch/config.jsonc;
+
 
   programs.home-manager.enable = true;
 }
