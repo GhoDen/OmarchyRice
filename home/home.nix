@@ -42,7 +42,7 @@ in
   # Starship Config
   home.file.".config/starship.toml".source = ./starship.toml;
   # Kitty Config
-  home.file.".config/kitty/kitty.conf".source = ./kitty/kitty.conf
+  home.file.".config/kitty/kitty.conf".source = ./kitty/kitty.conf;
 
   programs.home-manager.enable = true;
 }
