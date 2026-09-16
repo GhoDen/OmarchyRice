@@ -5,5 +5,4 @@ cd "$(dirname "$0")/.."
 USER_NAME="$(whoami)"
 
 exec nix run ./home#homeConfigurations."${USER_NAME}".activationPackage \
-  --extra-experimental-features "nix-command flakes" \
-  -- switch -b backup
+  --extra-experimental-features "nix-command flakes"
