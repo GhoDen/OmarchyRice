@@ -3,6 +3,9 @@
 [pacman]
 
 [aur]
+# Password Manager
+1password-cli
+1password
 
 [nix]
 starship
