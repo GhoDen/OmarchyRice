@@ -10,6 +10,8 @@ qutebrowser
 # Password Manager
 1password-cli
 1password
+# Music Player
+limusic-bin
 
 [nix]
 # Prompt
