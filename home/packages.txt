@@ -9,6 +9,8 @@ kitty
 qutebrowser
 # System Information Fetcher
 fastfetch
+# Text Editor
+neovim
 
 [aur]
 # Password Manager
