@@ -16,6 +16,8 @@ fastfetch
 1password
 # Music Player
 limusic-bin
+# Biometric Authentication
+biopass
 
 [nix]
 # Prompt
