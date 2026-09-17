@@ -11,6 +11,8 @@ qutebrowser
 fastfetch
 # Text Editor
 neovim
+# Kernel-level Key remapper
+keyd
 
 [aur]
 # Password Manager
