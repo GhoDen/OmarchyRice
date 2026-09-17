@@ -45,6 +45,6 @@ hl.config({
 hl.config({
   scrolling = {
     -- See only one column per screen instead of two.
-    column_width = 0.90,
+    column_width = 1,
   },
 })
