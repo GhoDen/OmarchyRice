@@ -51,6 +51,8 @@ in
   home.file.".config/qutebrowser/theme.py.tpl".source = ../dotfiles/qutebrowser/theme.py.tpl;
   # Biopass Config
   home.file.".config/com.ticklab.biopass/config.yaml".source = ../dotfiles/biopass/config.yaml;
+  # Hyprland Config
+  home.file.".config/hypr/looknfeel.lua".source = ../dotfiles/hypr/looknfeel.lua;
 
 
   programs.home-manager.enable = true;
