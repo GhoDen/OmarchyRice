@@ -50,6 +50,7 @@ in
   # Qutebrowser Config
   home.file.".config/qutebrowser/config.py".source = ../dotfiles/qutebrowser/config.py;
   home.file.".config/qutebrowser/theme.py.tpl".source = ../dotfiles/qutebrowser/theme.py.tpl;
+  home.file.".config/omarchy/hooks/theme-set.d/qutebrowser_theme_hook".source = ../dotfiles/qutebrowser/qutebrowser_theme_hook;
   # Biopass Config
   home.file.".config/com.ticklab.biopass/config.yaml".source = ../dotfiles/biopass/config.yaml;
   # Hyprland Config
