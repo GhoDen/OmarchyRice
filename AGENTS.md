@@ -21,3 +21,4 @@
 - Reclaim old Nix generations: `./scripts/clean.sh` (`nix-collect-garbage -d`).
 - There is no configured test, lint, formatter, or CI workflow. For non-system-mutating checks, run `bash -n scripts/*.sh` and `nix flake show ./home --extra-experimental-features "nix-command flakes"` when Nix is available.
 - `install.sh` also runs `scripts/configure-biopass.sh`, which changes root-owned PAM files and the polkit systemd override; keep a working root session open when testing biometric authentication.
+- `install.sh` downloads Biopass models from the GitHub `latest` release into `~/.local/share/com.ticklab.biopass/models/`; the downloader uses ETags and atomic replacement, so it is safe to rerun.

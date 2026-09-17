@@ -83,6 +83,11 @@ configure_biopass() {
   "$REPO_DIR/scripts/configure-biopass.sh"
 }
 
+download_biopass_models() {
+  log "Downloading Biopass models"
+  "$REPO_DIR/scripts/download-biopass-models.sh"
+}
+
 update_flake_inputs() {
   log "Updating flake inputs to latest (bleeding-edge mode)"
   nix flake update --flake "$HOME_DIR" \
@@ -97,6 +102,7 @@ main() {
   update_flake_inputs
   apply_home_manager
   configure_biopass
+  download_biopass_models
   log "Done."
 }
 
