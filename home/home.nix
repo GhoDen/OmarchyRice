@@ -54,7 +54,25 @@ in
   # Hyprland Config
   home.file.".config/hypr/looknfeel.lua".source = ../dotfiles/hypr/looknfeel.lua;
   # NeoVim Config
-  
+  home.file.".config/nvim/init.lua".source = ../dotfiles/nvim/init.lua;
+  home.file.".config/nvim/lua/config/custom.lua".source = ../dotfiles/nvim/lua/config/custom.lua;
+  home.file.".config/nvim/lua/config/init.lua".source = ../dotfiles/nvim/lua/config/init.lua;
+  home.file.".config/nvim/lua/config/lazy.lua".source = ../dotfiles/nvim/lua/config/lazy.lua;
+  home.file.".config/nvim/lua/config/lsp.lua".source = ../dotfiles/nvim/lua/config/lsp.lua;
+  home.file.".config/nvim/lua/config/remap.lua".source = ../dotfiles/nvim/lua/config/remap.lua;
+  home.file.".config/nvim/lua/lsp/clangd.lua".source = ../dotfiles/nvim/lua/lsp/clangd.lua;
+  home.file.".config/nvim/lua/lsp/lua_ls.lua".source = ../dotfiles/nvim/lua/lsp/lua_ls.lua;
+  home.file.".config/nvim/lua/lsp/marksman.lua".source = ../dotfiles/nvim/lua/lsp/marksman.lua;
+  home.file.".config/nvim/lua/lsp/qmlls.lua".source = ../dotfiles/nvim/lua/lsp/qmlls.lua;
+  home.file.".config/nvim/lua/lsp/rust.lua".source = ../dotfiles/nvim/lua/lsp/rust.lua;
+  home.file.".config/nvim/lua/plugins/99.lua".source = ../dotfiles/nvim/lua/plugins/99.lua;
+  home.file.".config/nvim/lua/plugins/colorizer.lua".source = ../dotfiles/nvim/lua/plugins/colorizer.lua;
+  home.file.".config/nvim/lua/plugins/lspconfig.lua".source = ../dotfiles/nvim/lua/plugins/lspconfig.lua;
+  home.file.".config/nvim/lua/plugins/lualine.lua".source = ../dotfiles/nvim/lua/plugins/lualine.lua;
+  home.file.".config/nvim/lua/plugins/markdown.lua".source = ../dotfiles/nvim/lua/plugins/markdown.lua;
+  home.file.".config/nvim/lua/plugins/telescope.lua".source = ../dotfiles/nvim/lua/plugins/telescope.lua;
+  home.file.".config/nvim/lua/plugins/tokyonight.lua".source = ../dotfiles/nvim/lua/plugins/tokyonight.lua;
+  home.file.".config/nvim/lua/plugins/treesitter.lua".source = ../dotfiles/nvim/lua/plugins/treesitter.lua;
 
 
   programs.home-manager.enable = true;
