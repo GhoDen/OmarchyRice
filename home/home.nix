@@ -53,6 +53,8 @@ in
   home.file.".config/com.ticklab.biopass/config.yaml".source = ../dotfiles/biopass/config.yaml;
   # Hyprland Config
   home.file.".config/hypr/looknfeel.lua".source = ../dotfiles/hypr/looknfeel.lua;
+  # NeoVim Config
+  
 
 
   programs.home-manager.enable = true;
