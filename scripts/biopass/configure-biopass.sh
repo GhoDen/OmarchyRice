@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 set -euo pipefail
+trap 'echo "Script failed, restoring PAM backups..."; sudo cp -a /etc/pam.d/*.bak-* /etc/pam.d/ 2>/dev/null || true' ERR
 
 REPO_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
 PAM_RULE='auth       sufficient                 libbiopass_pam.so'
@@ -11,6 +12,9 @@ install_pam_include() {
   if sudo test -f "$file" && sudo grep -Fqx "$PAM_RULE" "$file"; then
     return 0
   fi
+
+  local backup_file="${file}.bak-$(date +%s)"
+  sudo cp -a "$file" "$backup_file"
 
   tmp="$(sudo mktemp)"
   sudo awk -v rule="$PAM_RULE" '
@@ -30,6 +34,12 @@ install_pam_include() {
       if (!inserted) print rule
     }
   ' "$file" | sudo tee "$tmp" >/dev/null
+  if ! sudo grep -q "libbiopass_pam.so" "$tmp" || ! sudo grep -q "pam_unix.so" "$tmp"; then
+    echo "Error: PAM validation failed. Aborting changes to $file." >&2
+    sudo rm -f "$tmp"
+    return 1
+  fi
+
   if sudo cmp -s "$tmp" "$file"; then
     sudo rm -f "$tmp"
     return 0
