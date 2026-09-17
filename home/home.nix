@@ -74,7 +74,7 @@ in
   home.file.".config/nvim/lua/plugins/telescope.lua".source = ../dotfiles/nvim/lua/plugins/telescope.lua;
   home.file.".config/nvim/lua/plugins/tokyonight.lua".source = ../dotfiles/nvim/lua/plugins/tokyonight.lua;
   home.file.".config/nvim/lua/plugins/treesitter.lua".source = ../dotfiles/nvim/lua/plugins/treesitter.lua;
-
+  
 
   programs.home-manager.enable = true;
 }
