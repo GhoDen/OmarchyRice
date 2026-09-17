@@ -46,3 +46,4 @@ starship
 [nix-flake]
 # Screenshot
 markshot
+superfile
