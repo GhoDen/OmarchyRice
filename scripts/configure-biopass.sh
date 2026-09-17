@@ -7,8 +7,8 @@ POLKIT_CHANGED=0
 
 install_pam_include() {
   local file="$1" tmp
-  tmp="$(mktemp)"
-  trap 'rm -f "$tmp"' RETURN
+  tmp="$(sudo mktemp)"
+  trap 'sudo rm -f "$tmp"' RETURN
 
   if sudo test -f "$file" && sudo grep -Fqx "$PAM_RULE" "$file"; then
     return 0
