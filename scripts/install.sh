@@ -13,10 +13,13 @@ log() { echo -e "\033[1;32m==>\033[0m $*"; }
 warn() { echo -e "\033[1;33m!!\033[0m $*"; }
 
 require_omarchy() {
-  command -v omarchy-pkg-add >/dev/null 2>&1 || {
-    echo "omarchy-pkg-add not found. Is this an Omarchy install?" >&2
-    exit 1
-  }
+  local command_name
+  for command_name in omarchy-pkg-add omarchy-webapp-install omarchy-webapp-remove; do
+    command -v "$command_name" >/dev/null 2>&1 || {
+      echo "$command_name not found. Is this an Omarchy install?" >&2
+      exit 1
+    }
+  done
 }
 
 extract_section() {
@@ -74,6 +77,33 @@ drop_packages() {
   done <<< "$packages"
 }
 
+remove_webapps() {
+  local webapps="$1"
+
+  log "Removing explicitly excluded web apps"
+  while IFS= read -r app; do
+    [[ -z "$app" ]] && continue
+    log "  removing $app"
+    omarchy-webapp-remove "$app"
+  done <<< "$webapps"
+}
+
+install_webapps() {
+  local webapps="$1" name url icon extra
+
+  log "Installing web apps"
+  while IFS= read -r line; do
+    [[ -z "$line" ]] && continue
+    read -r name url icon extra <<< "$line"
+    if [[ -z "$name" || -z "$url" || -z "$icon" || -n "$extra" ]]; then
+      echo "Invalid web app entry (expected: name url icon-url): $line" >&2
+      exit 1
+    fi
+    log "  installing $name"
+    omarchy-webapp-install "$name" "$url" "$icon"
+  done <<< "$webapps"
+}
+
 validate_package_lists() {
   local desired="$1" excluded="$2" overlap
   overlap="$(comm -12 <(sort -u <<< "$desired") <(sort -u <<< "$excluded") | grep -v '^$' || true)"
@@ -124,15 +154,19 @@ update_flake_inputs() {
 
 main() {
   require_omarchy
-  local pacman_packages aur_packages excluded_packages
+  local pacman_packages aur_packages excluded_packages webapps_to_remove webapps
   pacman_packages="$(extract_section "$PACKAGES_FILE" pacman)"
   aur_packages="$(extract_section "$PACKAGES_FILE" aur)"
   excluded_packages="$(extract_section "$PACKAGES_FILE" remove)"
+  webapps_to_remove="$(extract_section "$PACKAGES_FILE" webapps-remove)"
+  webapps="$(extract_section "$PACKAGES_FILE" webapps)"
   validate_package_lists "$pacman_packages" "$excluded_packages"
   validate_package_lists "$aur_packages" "$excluded_packages"
   sync_packages "$pacman_packages" "$PACMAN_STATE" omarchy-pkg-add "pacman"
   sync_packages "$aur_packages" "$AUR_STATE" omarchy-pkg-aur-add "AUR"
   drop_packages "$excluded_packages"
+  remove_webapps "$webapps_to_remove"
+  install_webapps "$webapps"
   install_nix
   update_flake_inputs
   apply_home_manager

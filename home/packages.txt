@@ -30,6 +30,15 @@ brave-bin
 # Entries here are intentionally dropped on every ./scripts/install.sh run.
 chromium
 
+[webapps-remove]
+# Web apps that should not be present on this machine.
+# Entries here are removed on every ./scripts/install.sh run.
+HEY
+Basecamp
+
+[webapps]
+# Name URL icon URL
+
 [nix]
 # Prompt
 starship
