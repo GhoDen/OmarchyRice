@@ -47,6 +47,8 @@ in
   home.file.".config/fish/config.fish".source = ../dotfiles/fish/config.fish;
   # Fastfetch Config
   home.file.".config/fastfetch/config.jsonc".source = ../dotfiles/fastfetch/config.jsonc;
+  # Qutebrowser Config
+  home.file.".config/qutebrowser/theme.py.tpl".source = ../dotfiles/qutebrowser/theme.py.tpl;
 
 
   programs.home-manager.enable = true;
