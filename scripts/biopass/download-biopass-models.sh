@@ -4,6 +4,7 @@ set -euo pipefail
 DATA_HOME="${XDG_DATA_HOME:-$HOME/.local/share}"
 MODELS_DIR="$DATA_HOME/com.ticklab.biopass/models"
 BASE_URL="https://github.com/TickLabVN/biopass/releases/latest/download"
+DOWNLOAD_TIMEOUT=4
 
 MODELS=(
   yolov8n-face.onnx
@@ -19,7 +20,7 @@ download_model() {
   temporary="$(mktemp "$MODELS_DIR/.${filename}.XXXXXX")"
   etag="$destination.etag"
 
-  if curl --fail --location --silent --show-error \
+  if timeout --kill-after=1s "${DOWNLOAD_TIMEOUT}s" curl --fail --location --silent --show-error \
     --retry 3 --retry-delay 2 \
     --etag-compare "$etag" --etag-save "$etag" \
     --output "$temporary" "$BASE_URL/$filename"; then
@@ -31,7 +32,12 @@ download_model() {
       echo "Biopass: $filename is already current"
     fi
   else
+    local status=$?
     rm -f -- "$temporary"
+    if [[ "$status" -eq 124 || "$status" -eq 137 ]]; then
+      echo "Biopass: Skipping $filename (download timed out after ${DOWNLOAD_TIMEOUT}s)"
+      return 0
+    fi
     echo "Biopass: failed to download $filename" >&2
     return 1
   fi
