@@ -28,6 +28,7 @@ brave-bin
 [remove]
 # Omarchy defaults or other packages that should not be present on this machine.
 # Entries here are intentionally dropped on every ./scripts/install.sh run.
+chromium
 
 [nix]
 # Prompt
