@@ -49,6 +49,8 @@ in
   home.file.".config/fastfetch/config.jsonc".source = ../dotfiles/fastfetch/config.jsonc;
   # Qutebrowser Config
   home.file.".config/qutebrowser/theme.py.tpl".source = ../dotfiles/qutebrowser/theme.py.tpl;
+  # Biopass Config
+  home.file.".config/com.ticklab.biopass/config.yaml".source = ../dotfiles/biopass/config.yaml;
 
 
   programs.home-manager.enable = true;

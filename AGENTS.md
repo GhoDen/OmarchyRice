@@ -12,6 +12,7 @@
 - The Nix package resolver only supports top-level `pkgs.<name>` attributes. Do not add nested nixpkgs paths to `[nix]` without changing the resolver.
 - `.state/` contains machine-local pacman/AUR ownership state used for pruning. Never commit or copy it between machines; removal from the manifest can uninstall packages previously tracked there.
 - `home/flake.lock` is intentionally ignored and is regenerated locally by the install workflow.
+- Biopass's enrolled biometrics and model data are machine/user-specific; do not copy `~/.config/com.ticklab.biopass/biopass.db` or `~/.local/share/com.ticklab.biopass/` into the repo.
 
 ## Commands And Hazards
 
@@ -19,3 +20,4 @@
 - Apply only the Home Manager configuration: `./scripts/switch.sh`. It selects the configuration using `whoami`; `home/flake.nix` currently defines only the hardcoded `denver` configuration, so another username will fail until the flake is changed.
 - Reclaim old Nix generations: `./scripts/clean.sh` (`nix-collect-garbage -d`).
 - There is no configured test, lint, formatter, or CI workflow. For non-system-mutating checks, run `bash -n scripts/*.sh` and `nix flake show ./home --extra-experimental-features "nix-command flakes"` when Nix is available.
+- `install.sh` also runs `scripts/configure-biopass.sh`, which changes root-owned PAM files and the polkit systemd override; keep a working root session open when testing biometric authentication.

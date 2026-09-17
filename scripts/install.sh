@@ -78,6 +78,11 @@ apply_home_manager() {
   "$REPO_DIR/scripts/switch.sh"
 }
 
+configure_biopass() {
+  log "Configuring Biopass PAM and polkit integration"
+  "$REPO_DIR/scripts/configure-biopass.sh"
+}
+
 update_flake_inputs() {
   log "Updating flake inputs to latest (bleeding-edge mode)"
   nix flake update --flake "$HOME_DIR" \
@@ -91,6 +96,7 @@ main() {
   install_nix
   update_flake_inputs
   apply_home_manager
+  configure_biopass
   log "Done."
 }
 

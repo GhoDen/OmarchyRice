@@ -1,0 +1,34 @@
+schema_version: 2
+strategy:
+  debug: false
+  execution_mode: parallel
+  order:
+    - face
+    - fingerprint
+  # Allow Biopass to authenticate polkit and pkexec requests.
+  ignore_services: []
+methods:
+  face:
+    enable: true
+    retries: 5
+    retry_delay: 200
+    camera: null
+    detection:
+      model_id: yolov8n-face
+      threshold: 0.5
+    recognition:
+      model_id: edgeface-s-gamma-05
+      threshold: 0.5
+    anti_spoofing:
+      enable: true
+      model:
+        model_id: mobilenetv3-antispoof
+        threshold: 0.8
+      ir_camera: /dev/v4l/by-id/usb-Sonix_Technology_Co.__Ltd._ASUS_FHD_webcam_SN0001-video-index0
+      ir_warmup_delay_ms: 300
+      ir_presence_timeout_ms: 1500
+  fingerprint:
+    enable: true
+    retries: 1
+    timeout: 5000
+appearance: system
