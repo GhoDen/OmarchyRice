@@ -7,13 +7,12 @@ POLKIT_CHANGED=0
 
 install_pam_include() {
   local file="$1" tmp
-  tmp="$(sudo mktemp)"
-  trap 'sudo rm -f "$tmp"' RETURN
 
   if sudo test -f "$file" && sudo grep -Fqx "$PAM_RULE" "$file"; then
     return 0
   fi
 
+  tmp="$(sudo mktemp)"
   sudo awk -v rule="$PAM_RULE" '
     !inserted && $1 == "auth" {
       for (i = 1; i <= NF; i++) {
@@ -32,9 +31,11 @@ install_pam_include() {
     }
   ' "$file" | sudo tee "$tmp" >/dev/null
   if sudo cmp -s "$tmp" "$file"; then
+    sudo rm -f "$tmp"
     return 0
   fi
   sudo install -m 0644 "$tmp" "$file"
+  sudo rm -f "$tmp"
 }
 
 install_polkit_override() {
