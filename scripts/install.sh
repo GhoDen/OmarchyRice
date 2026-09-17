@@ -61,6 +61,29 @@ sync_packages() {
   echo "$desired" > "$state_file"
 }
 
+drop_packages() {
+  local packages="$1"
+
+  log "Dropping explicitly excluded packages"
+  while IFS= read -r pkg; do
+    [[ -z "$pkg" ]] && continue
+    if pacman -Qi "$pkg" &>/dev/null; then
+      log "  removing $pkg (explicitly excluded)"
+      omarchy-pkg-drop "$pkg" || warn "  failed to remove $pkg (in use by something else? left installed)"
+    fi
+  done <<< "$packages"
+}
+
+validate_package_lists() {
+  local desired="$1" excluded="$2" overlap
+  overlap="$(comm -12 <(sort -u <<< "$desired") <(sort -u <<< "$excluded") | grep -v '^$' || true)"
+  if [[ -n "$overlap" ]]; then
+    echo "Package cannot be both installed and excluded:" >&2
+    echo "$overlap" >&2
+    exit 1
+  fi
+}
+
 install_nix() {
   if command -v nix >/dev/null 2>&1; then
     log "Nix already installed, skipping"
@@ -96,8 +119,15 @@ update_flake_inputs() {
 
 main() {
   require_omarchy
-  sync_packages "$(extract_section "$PACKAGES_FILE" pacman)" "$PACMAN_STATE" omarchy-pkg-add "pacman"
-  sync_packages "$(extract_section "$PACKAGES_FILE" aur)" "$AUR_STATE" omarchy-pkg-aur-add "AUR"
+  local pacman_packages aur_packages excluded_packages
+  pacman_packages="$(extract_section "$PACKAGES_FILE" pacman)"
+  aur_packages="$(extract_section "$PACKAGES_FILE" aur)"
+  excluded_packages="$(extract_section "$PACKAGES_FILE" remove)"
+  validate_package_lists "$pacman_packages" "$excluded_packages"
+  validate_package_lists "$aur_packages" "$excluded_packages"
+  sync_packages "$pacman_packages" "$PACMAN_STATE" omarchy-pkg-add "pacman"
+  sync_packages "$aur_packages" "$AUR_STATE" omarchy-pkg-aur-add "AUR"
+  drop_packages "$excluded_packages"
   install_nix
   update_flake_inputs
   apply_home_manager

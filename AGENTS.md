@@ -3,7 +3,7 @@
 ## What This Repo Is
 
 - This is a personal Omarchy desktop configuration, not an application with a build or test suite.
-- `home/packages.txt` is the package source of truth. Its sections map to install mechanisms: `[pacman]` and `[aur]` use Omarchy package commands; `[nix]` resolves top-level attributes from nixpkgs; `[nix-flake]` resolves flake inputs declared in `home/flake.nix`.
+- `home/packages.txt` is the package source of truth. Its sections map to install mechanisms: `[pacman]` and `[aur]` use Omarchy package commands; `[remove]` is an explicit package denylist applied by `scripts/install.sh`; `[nix]` resolves top-level attributes from nixpkgs; `[nix-flake]` resolves flake inputs declared in `home/flake.nix`.
 - Home Manager reads `home/packages.txt` at Nix evaluation time, and `home/home.nix` maps the tracked dotfiles into `~/.config/`.
 
 ## Package Changes
@@ -11,6 +11,7 @@
 - Adding a `[nix-flake]` package requires both a matching input in `home/flake.nix` and the package name in `home/packages.txt`; the input must expose `packages.<system>.default`.
 - The Nix package resolver only supports top-level `pkgs.<name>` attributes. Do not add nested nixpkgs paths to `[nix]` without changing the resolver.
 - `.state/` contains machine-local pacman/AUR ownership state used for pruning. Never commit or copy it between machines; removal from the manifest can uninstall packages previously tracked there.
+- `[remove]` intentionally targets packages regardless of whether this repository installed them; keep it limited to packages you explicitly want absent.
 - `home/flake.lock` is intentionally ignored and is regenerated locally by the install workflow.
 - Biopass's enrolled biometrics and model data are machine/user-specific; do not copy `~/.config/com.ticklab.biopass/biopass.db` or `~/.local/share/com.ticklab.biopass/` into the repo.
 

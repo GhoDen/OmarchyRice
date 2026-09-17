@@ -61,6 +61,7 @@ Four sections, each a different kind of dependency:
 |---------------|----------------------------------------------------------------|----------------------------------------------------------|
 | `[pacman]`    | Official Arch repo packages                                    | `omarchy-pkg-add` / `omarchy-pkg-drop`                   |
 | `[aur]`       | AUR packages                                                   | `omarchy-pkg-aur-add` / `omarchy-pkg-drop`               |
+| `[remove]`    | Packages that must not be installed on this machine            | `omarchy-pkg-drop`                                       |
 | `[nix]`       | Any package that exists in nixpkgs                             | `home.packages`, resolved by name against `pkgs`         |
 | `[nix-flake]` | Apps only available as a GitHub flake (not in nixpkgs)         | `home.packages`, resolved against `flake.nix`'s `inputs` |
 
@@ -84,6 +85,22 @@ evaluated, so:
 Removing it from `[nix-flake]` alone is enough to uninstall it — you don't
 need to touch `flake.nix` unless you're dropping the source entirely.
 
+Use `[remove]` for Omarchy defaults that should not be present on this machine:
+
+```ini
+[remove]
+gnome-calculator
+satty
+```
+
+These entries are an explicit removal list, not ownership state. They are
+dropped on every `./scripts/install.sh` run if installed, including packages
+that Omarchy installed before this repository was set up. A package cannot
+appear in both `[remove]` and `[pacman]` or `[aur]`; the install script stops
+before changing packages if it finds such an overlap. Removal uses `pacman -Rns`,
+so packages required by other installed packages are left in place and warned
+about.
+
 ## Usage
 
 **First run on a new machine** (assumes Omarchy is already installed):
@@ -96,7 +113,8 @@ cd omarchyrice
 
 This will:
 1. Sync `[pacman]` and `[aur]` packages (installs anything missing, drops
-   anything no longer listed that this repo previously installed).
+   anything no longer listed that this repo previously installed, and applies
+   the explicit `[remove]` list).
 2. Install Nix if it isn't already present.
 3. Run `home-manager switch`, which installs everything under `[nix]` and
    `[nix-flake]`.
