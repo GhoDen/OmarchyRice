@@ -39,6 +39,7 @@ Basecamp
 
 [webapps]
 # Name URL icon URL
+Reddit https://reddit.com/ https://redditinc.com/hs-fs/hubfs/Reddit%20Inc/Content/Brand%20Page/Reddit_Logo.png?width=400&height=400&name=Reddit_Logo.png
 
 [nix]
 # Prompt
