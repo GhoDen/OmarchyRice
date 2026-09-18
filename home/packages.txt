@@ -51,3 +51,4 @@ starship
 # Screenshot
 markshot
 superfile
+edgepad
