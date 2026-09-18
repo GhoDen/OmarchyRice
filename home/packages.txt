@@ -26,9 +26,6 @@ biopass
 brave-bin
 # Desktop Entry editor
 jddesktopentryedit
-# trackpad gestures
-playerctl
-ayuz
 
 [remove]
 # Omarchy defaults or other packages that should not be present on this machine.
