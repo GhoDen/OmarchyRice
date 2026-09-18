@@ -10,7 +10,7 @@
 
 - Adding a `[nix-flake]` package requires both a matching input in `home/flake.nix` and the package name in `home/packages.txt`; the input must expose `packages.<system>.default`.
 - The Nix package resolver only supports top-level `pkgs.<name>` attributes. Do not add nested nixpkgs paths to `[nix]` without changing the resolver.
-- `.state/` contains machine-local pacman/AUR ownership state used for pruning. Never commit or copy it between machines; removal from the manifest can uninstall packages previously tracked there.
+- `.state/` contains machine-local pacman/AUR/webapp ownership state used for pruning. Never commit or copy it between machines; removal from the manifest can uninstall packages or webapps previously tracked there.
 - `[remove]` intentionally targets packages regardless of whether this repository installed them; keep it limited to packages you explicitly want absent.
 - `home/flake.lock` is intentionally ignored and is regenerated locally by the install workflow.
 - Biopass's enrolled biometrics and model data are machine/user-specific; do not copy `~/.config/com.ticklab.biopass/biopass.db` or `~/.local/share/com.ticklab.biopass/` into the repo.

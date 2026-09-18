@@ -8,6 +8,7 @@ PACKAGES_FILE="$HOME_DIR/packages.txt"
 STATE_DIR="$REPO_DIR/.state"
 PACMAN_STATE="$STATE_DIR/pacman-managed.txt"
 AUR_STATE="$STATE_DIR/aur-managed.txt"
+WEBAPP_STATE="$STATE_DIR/webapps-managed.txt"
 
 # shellcheck source=utils.sh
 source "$REPO_DIR/scripts/utils.sh"
