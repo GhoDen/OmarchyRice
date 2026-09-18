@@ -55,6 +55,7 @@ in
   home.file.".config/com.ticklab.biopass/config.yaml".source = ../dotfiles/biopass/config.yaml;
   # Hyprland Config
   home.file.".config/hypr/looknfeel.lua".source = ../dotfiles/hypr/looknfeel.lua;
+  home.file.".config/hypr/input.lua".source = ../dotfiles/hypr/input.lua;
   # NeoVim Config
   home.file.".config/nvim/init.lua".source = ../dotfiles/nvim/init.lua;
   home.file.".config/nvim/lua/config/custom.lua".source = ../dotfiles/nvim/lua/config/custom.lua;
