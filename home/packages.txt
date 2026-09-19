@@ -18,6 +18,8 @@ keyd
 # PDF Viewer
 zathura
 zathura-pdf-mupdf
+# Development tools
+pnpm
 
 [aur]
 # Password Manager
