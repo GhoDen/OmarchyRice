@@ -31,6 +31,8 @@ brave-bin
 jddesktopentryedit
 # Java tooling
 jdtls
+# Discord client
+vesktop-bin
 
 [remove]
 # Omarchy defaults or other packages that should not be present on this machine.
