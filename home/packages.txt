@@ -13,7 +13,6 @@ fastfetch
 neovim
 # Java tooling
 jdk-openjdk
-jdtls
 # Kernel-level Key remapper
 keyd
 
@@ -29,6 +28,8 @@ biopass
 brave-bin
 # Desktop Entry editor
 jddesktopentryedit
+# Java tooling
+jdtls
 
 [remove]
 # Omarchy defaults or other packages that should not be present on this machine.
