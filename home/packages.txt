@@ -15,6 +15,9 @@ neovim
 jdk-openjdk
 # Kernel-level Key remapper
 keyd
+# PDF Viewer
+zathura
+zathura-pdf-mupdf
 
 [aur]
 # Password Manager
