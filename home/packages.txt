@@ -25,8 +25,6 @@ zathura-pdf-mupdf
 1password
 # Music Player
 limusic-bin
-# Biometric Authentication
-biopass
 # Browser (mainly for private browsing & darknet)
 brave-bin
 # Desktop Entry editor
