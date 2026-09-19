@@ -11,6 +11,9 @@ qutebrowser
 fastfetch
 # Text Editor
 neovim
+# Java tooling
+jdk-openjdk
+jdtls
 # Kernel-level Key remapper
 keyd
 
@@ -46,6 +49,8 @@ Reddit https://reddit.com/ https://redditinc.com/hs-fs/hubfs/Reddit%20Inc/Conten
 [nix]
 # Prompt
 starship
+# Tree
+tree
 
 [nix-flake]
 # Screenshot

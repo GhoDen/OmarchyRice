@@ -64,6 +64,7 @@ in
   home.file.".config/nvim/lua/config/lsp.lua".source = ../dotfiles/nvim/lua/config/lsp.lua;
   home.file.".config/nvim/lua/config/remap.lua".source = ../dotfiles/nvim/lua/config/remap.lua;
   home.file.".config/nvim/lua/lsp/clangd.lua".source = ../dotfiles/nvim/lua/lsp/clangd.lua;
+  home.file.".config/nvim/lua/lsp/jdtls.lua".source = ../dotfiles/nvim/lua/lsp/jdtls.lua;
   home.file.".config/nvim/lua/lsp/lua_ls.lua".source = ../dotfiles/nvim/lua/lsp/lua_ls.lua;
   home.file.".config/nvim/lua/lsp/marksman.lua".source = ../dotfiles/nvim/lua/lsp/marksman.lua;
   home.file.".config/nvim/lua/lsp/qmlls.lua".source = ../dotfiles/nvim/lua/lsp/qmlls.lua;
