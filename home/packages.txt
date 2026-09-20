@@ -35,6 +35,8 @@ jddesktopentryedit
 jdtls
 # Discord client
 vesktop-bin
+# Java IDE
+intellij-idea-ultimate-edition
 
 [remove]
 # Omarchy defaults or other packages that should not be present on this machine.
