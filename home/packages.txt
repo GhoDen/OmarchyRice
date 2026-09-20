@@ -26,7 +26,7 @@ pnpm
 1password-cli
 1password
 # Music Player
-limusic-bin
+# limusic-bin
 # Browser (mainly for private browsing & darknet)
 brave-bin
 # Desktop Entry editor
