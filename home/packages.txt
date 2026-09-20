@@ -39,8 +39,12 @@ vesktop-bin
 [remove]
 # Omarchy defaults or other packages that should not be present on this machine.
 # Entries here are intentionally dropped on every ./scripts/install.sh run.
+# Ew, chrome
 chromium
+# Weird and unecessary (radio???) music player
 cliamp
+# Default Terminal
+foot
 
 [webapps-remove]
 # Web apps that should not be present on this machine.
