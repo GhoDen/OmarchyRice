@@ -53,6 +53,7 @@ foot
 # Entries here are removed on every ./scripts/install.sh run.
 HEY
 Basecamp
+Discord
 
 [webapps]
 # Name URL icon URL
