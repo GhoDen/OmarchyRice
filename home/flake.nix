@@ -21,6 +21,10 @@
       url = "github:assembledev/edgepad";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    limusic = {
+      url = "github:GhoDen/limusic";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     # (Example) Any future repositories can follow this exact same pattern:
     # some-other-app = {
     #   url = "github:owner/repo";
