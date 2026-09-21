@@ -39,6 +39,8 @@ vesktop-bin
 intellij-idea-ultimate-edition
 # Personal AI Assistant	
 openclaw
+# Image viewer
+qview
 
 [remove]
 # Omarchy defaults or other packages that should not be present on this machine.
