@@ -20,6 +20,8 @@ zathura
 zathura-pdf-mupdf
 # Development tools
 pnpm
+# Telegram Client
+telegram-desktop
 
 [aur]
 # Password Manager
