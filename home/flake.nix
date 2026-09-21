@@ -22,7 +22,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     limusic = {
-      url = "github:GhoDen/limusic/feat/add-nix-flake";
+      url = "github:GhoDen/limusic/feat/add-nix-build";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     # (Example) Any future repositories can follow this exact same pattern:
