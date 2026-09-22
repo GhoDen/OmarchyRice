@@ -23,7 +23,15 @@ pnpm
 # Telegram Client
 telegram-desktop
 # VM
+qemu-full
 virt-manager
+libvirt
+dnsmasq
+ebtables
+iptables-nft
+edk2-ovmf
+virt-viewer
+dmidecode
 
 [aur]
 # Password Manager
