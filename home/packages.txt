@@ -22,6 +22,8 @@ zathura-pdf-mupdf
 pnpm
 # Telegram Client
 telegram-desktop
+# VM
+virt-manager
 
 [aur]
 # Password Manager
