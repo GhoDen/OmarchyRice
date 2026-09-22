@@ -1,1 +1,1 @@
-curl -fsSL https://raw.githubusercontent.com/joaofelipegalvao/omarchy-yazi/main/scripts/omarchy-yazi-install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/GhoDen/omarchy-yazi/main/scripts/omarchy-yazi-install.sh | bash
