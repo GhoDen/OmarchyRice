@@ -17,7 +17,7 @@
 o.bind("SUPER + Q", "Quit Application", hl.dsp.window.close())
 o.bind("SUPER + E", "File Manager", { tui = "superfile", focus = true })
 o.bind("SUPER + B", "Browser", { omarchy = "browser" })
-
+o.bind("SUPER + C", "Terminal", { omarchy = "terminal" })
 
 -- Change an existing binding by unbinding it first, then binding the key again.
 -- This example changes SUPER+SPACE from the launcher to the Omarchy root menu.
@@ -32,9 +32,8 @@ o.bind("SUPER + F", "Tiled Full Screen", hl.dsp.window.fullscreen({ mode = "maxi
 hl.unbind("SUPER + SHIFT + F")
 o.bind("SUPER + SHIFT + F", "Full Screen", hl.dsp.window.fullscreen({ mode = "fullscreen" }))
 
-o.bind("SUPER + C", "Terminal", { omarchy = "terminal" })
-
-
+hl.unbind("SUPER + SHIFT + SPACE")
+o.bind("SUPER + SHIFT + SPACE", "1Password Quick Access Menu", "1password --quick-access")
 
 -- Disable a default binding without replacing it.
 -- hl.unbind("SUPER + SHIFT + B")

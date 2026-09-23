@@ -77,6 +77,7 @@ Discord
 # Name URL icon URL
 Reddit https://reddit.com/ https://redditinc.com/hs-fs/hubfs/Reddit%20Inc/Content/Brand%20Page/Reddit_Logo.png?width=400&height=400&name=Reddit_Logo.png
 Facebook https://facebook.com/ https://thumb.wikimedia.org/wikipedia/en/thumb/0/04/Facebook_f_logo_%282021%29.svg/1280px-Facebook_f_logo_%282021%29.svg.png?utm_source=en.wikipedia.org&utm_campaign=index&utm_content=thumbnail
+Instagram https://instagram.com/ https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e7/Instagram_logo_2016.svg/1280px-Instagram_logo_2016.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail
 
 [nix]
 # Prompt
