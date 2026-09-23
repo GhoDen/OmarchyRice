@@ -15,7 +15,7 @@
 -- Add a new binding.
 -- o.bind("SUPER + SHIFT + R", "SSH", "alacritty -e ssh your-server")
 o.bind("SUPER + Q", "Quit Application", hl.dsp.window.close())
-o.bind("SUPER + E", "File Manager", { tui = "superfile", focus = true })
+o.bind("SUPER + E", "File Manager", { tui = "yazi", focus = true }
 o.bind("SUPER + B", "Browser", { omarchy = "browser" })
 o.bind("SUPER + C", "Terminal", { omarchy = "terminal" })
 
