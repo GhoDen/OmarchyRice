@@ -53,6 +53,8 @@ intellij-idea-ultimate-edition
 openclaw
 # Image viewer
 qview
+# Oracle SQLDeveloper
+oracle-sqldeveloper
 
 [remove]
 # Omarchy defaults or other packages that should not be present on this machine.
