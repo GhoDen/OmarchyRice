@@ -32,6 +32,8 @@ iptables-nft
 edk2-ovmf
 virt-viewer
 dmidecode
+# Markdown Preview
+yarn
 
 [aur]
 # Password Manager
