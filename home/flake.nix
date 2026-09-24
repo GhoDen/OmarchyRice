@@ -29,10 +29,6 @@
       url = "github:GhoDen/limusic/feat/add-nix-build";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    thunderstruck-theme = {
-      url = "github:ejuro/omarchy-thunderstruck-theme";
-      flake = false;
-    };
     # (Example) Any future repositories can follow this exact same pattern:
     # some-other-app = {
     #   url = "github:owner/repo";
