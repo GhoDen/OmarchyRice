@@ -39,6 +39,16 @@ in
 
   home.packages = nixPackages ++ flakePackages;
 
+  # Keep the theme source in the flake and let Home Manager own its install.
+  home.file.".config/omarchy/themes/omarchy-thunderstruck-theme".source =
+    inputs."thunderstruck-theme";
+
+  # Applying the theme is required after the declarative files are linked so
+  # Omarchy can regenerate its derived application and shell configuration.
+  home.activation.omarchyTheme = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+    omarchy theme set omarchy-thunderstruck-theme
+  '';
+
   # Starship Config
   home.file.".config/starship.toml".source = ../dotfiles/starship/starship.toml;
   # Kitty Config

@@ -93,4 +93,4 @@ markshot
 # superfile
 yazi
 edgepad
-limusic
+#limusic
