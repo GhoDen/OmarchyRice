@@ -18,6 +18,10 @@ o.bind("SUPER + Q", "Quit Application", hl.dsp.window.close())
 o.bind("SUPER + E", "File Manager", { tui = "yazi", focus = true })
 o.bind("SUPER + B", "Browser", { omarchy = "browser" })
 o.bind("SUPER + C", "Terminal", { omarchy = "terminal" })
+o.bind("SUPER + H", "Toggle window split", hl.dsp.layout("togglesplit"))
+o.bind("SUPER + SHIFT + K", "Swap window to the left", hl.dsp.window.swap({ direction = "l" }))
+o.bind("SUPER + SHIFT + J", "Swap window to the right", hl.dsp.window.swap({ direction = "r" }))
+
 
 -- Change an existing binding by unbinding it first, then binding the key again.
 -- This example changes SUPER+SPACE from the launcher to the Omarchy root menu.
@@ -35,11 +39,22 @@ o.bind("SUPER + SHIFT + F", "Full Screen", hl.dsp.window.fullscreen({ mode = "fu
 hl.unbind("SUPER + SHIFT + SPACE")
 o.bind("SUPER + SHIFT + SPACE", "1Password Quick Access Menu", "1password --quick-access")
 
+hl.unbind("SUPER + SHIFT + SLASH")
+o.bind("SUPER + SHIFT + SLASH", "Keybindings", "omarchy-menu-keybindings")
+
+hl.unbind("SUPER + K")
+o.bind("SUPER + K", "Focus on left window", hl.dsp.focus({ direction = "l" }))
+o.bind("SUPER + K", "Toggle workspace layout", "omarchy-hyprland-workspace-layout-toggle")
+
+hl.unbind("SUPER + J")
+o.bind("SUPER + J", "Focus on right window", hl.dsp.focus({ direction = "r" }))
+
 -- Disable a default binding without replacing it.
 -- hl.unbind("SUPER + SHIFT + B")
 hl.unbind("SUPER + T")
 hl.unbind("SUPER + RETURN")
 hl.unbind("SUPER + SHIFT + RETURN")
+hl.unbind("SUPER + ALT + F")
 
 -- Logitech MX Keys examples:
 -- o.bind("SUPER + SHIFT + S", nil, "omarchy-capture-screenshot")
