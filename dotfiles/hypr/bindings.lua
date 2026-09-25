@@ -44,7 +44,6 @@ o.bind("SUPER + SHIFT + SLASH", "Keybindings", "omarchy-menu-keybindings")
 
 hl.unbind("SUPER + K")
 o.bind("SUPER + K", "Focus on left window", hl.dsp.focus({ direction = "l" }))
-o.bind("SUPER + K", "Toggle workspace layout", "omarchy-hyprland-workspace-layout-toggle")
 
 hl.unbind("SUPER + J")
 o.bind("SUPER + J", "Focus on right window", hl.dsp.focus({ direction = "r" }))
