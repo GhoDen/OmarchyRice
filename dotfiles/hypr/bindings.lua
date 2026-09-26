@@ -21,7 +21,8 @@ o.bind("SUPER + C", "Terminal", { omarchy = "terminal" })
 o.bind("SUPER + H", "Toggle window split", hl.dsp.layout("togglesplit"))
 o.bind("SUPER + SHIFT + K", "Swap window to the left", hl.dsp.window.swap({ direction = "l" }))
 o.bind("SUPER + SHIFT + J", "Swap window to the right", hl.dsp.window.swap({ direction = "r" }))
-
+o.bind("SUPER + I", "Show hints", "hints")
+o.bind("SUPER + Y", "Show hints (Scroll mode)", "hints --mode scroll")
 
 -- Change an existing binding by unbinding it first, then binding the key again.
 -- This example changes SUPER+SPACE from the launcher to the Omarchy root menu.
