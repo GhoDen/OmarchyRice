@@ -47,6 +47,8 @@ brave-bin
 jddesktopentryedit
 # Java tooling
 jdtls
+# VHDL tooling
+vhdl-ls
 # Discord client
 vesktop-bin
 # Java IDE

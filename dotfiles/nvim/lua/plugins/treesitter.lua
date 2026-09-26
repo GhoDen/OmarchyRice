@@ -9,7 +9,8 @@ return {
 			'qmljs',
 			'java',
 			'markdown',
-			'markdown_inline'
+			'markdown_inline',
+			'vhdl'
 		}
 	end
 }
