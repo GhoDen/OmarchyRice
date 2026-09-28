@@ -88,6 +88,8 @@ Instagram https://instagram.com/ https://thumb.wikimedia.org/wikipedia/commons/t
 starship
 # Tree
 tree
+# Torrents
+qbittorrent
 
 [nix-flake]
 # Screenshot
