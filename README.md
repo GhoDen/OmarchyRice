@@ -32,6 +32,7 @@ that a stale entry doesn't quietly linger on the system after you remove it.
 ├── dotfiles/            # Configurations linked into ~/.config by Home Manager
 └── scripts/
     ├── install.sh      # Full setup and synchronization
+    ├── uninstall.sh    # Remove repository-managed system state
     ├── switch.sh       # Only re-applies the Home Manager flake
     ├── clean.sh        # nix-collect-garbage -d
     ├── modules/        # Package, web-app, Nix, keyd, Yazi, and VM setup steps
@@ -158,6 +159,17 @@ git pull --rebase
 
 Same script, same result, whether you're adding something new or pruning
 something old.
+
+`install.sh` also installs an Omarchy `post-update` hook, so `omarchy update`
+automatically reruns the repository synchronization afterward. Remove the hook
+and repository-managed packages, web apps, and integrations with:
+
+```bash
+./scripts/uninstall.sh
+```
+
+The uninstall script does not remove packages from `[remove]`, manually
+installed packages, or Home Manager generations and files.
 
 **Reclaiming disk space** from old Nix generations:
 
