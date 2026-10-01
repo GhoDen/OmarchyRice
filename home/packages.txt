@@ -90,6 +90,8 @@ starship
 tree
 # Torrents
 qbittorrent
+# Advanced image editor
+gimp
 
 [nix-flake]
 # Screenshot

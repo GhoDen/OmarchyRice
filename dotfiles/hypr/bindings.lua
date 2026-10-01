@@ -50,6 +50,12 @@ o.bind("SUPER + K", "Focus on left window", hl.dsp.focus({ direction = "l" }))
 hl.unbind("SUPER + J")
 o.bind("SUPER + J", "Focus on right window", hl.dsp.focus({ direction = "r" }))
 
+hl.unbind("XF86TouchpadToggle")
+o.bind("XF86TouchpadToggle", "Toggle the touchpad", hl.dsp.exec_cmd("sudo /usr/local/bin/touchpad-toggle"))
+hl.unbind("XF86TouchpadOn", "Enable touchpad", "omarchy-toggle-touchpad on", { locked = true })
+hl.unbind("XF86TouchpadOff", "Disable touchpad", "omarchy-toggle-touchpad off", { locked = true })
+
+
 -- Disable a default binding without replacing it.
 -- hl.unbind("SUPER + SHIFT + B")
 hl.unbind("SUPER + T")
